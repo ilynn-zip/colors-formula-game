@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqwnwstg8u7ua"]
+
+[ext_resource type="Texture2D" uid="uid://doj4pusrywtel" path="res://src/png/orgn_color.png" id="1_8mt1u"]
+[ext_resource type="Texture2D" uid="uid://blkcruay2prcx" path="res://src/png/orgn.png" id="2_shl8q"]
+[ext_resource type="FontFile" uid="uid://cik14wtjqorsg" path="res://src/fonts/BalooBhai2-SemiBold.ttf" id="3_ahkba"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fwf6i"]
+font = ExtResource("3_ahkba")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[node name="ColorPanel" type="Control"]
+layout_mode = 3
+anchor_right = 0.391
+anchor_bottom = 0.375
+offset_left = -250.0
+offset_top = -132.0
+offset_right = -750.48
+offset_bottom = -402.0
+pivot_offset = Vector2(250, 132)
+
+[node name="OrgnColor" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 480.0
+offset_bottom = 248.0
+texture = ExtResource("1_8mt1u")
+metadata/_edit_use_anchors_ = true
+
+[node name="Orgn" type="TextureRect" parent="."]
+layout_mode = 0
+texture = ExtResource("2_shl8q")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = 44.0
+offset_right = 74.0
+offset_bottom = 126.0
+label_settings = SubResource("LabelSettings_fwf6i")
+horizontal_alignment = 1
+vertical_alignment = 1

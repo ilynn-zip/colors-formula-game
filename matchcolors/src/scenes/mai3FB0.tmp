@@ -1,0 +1,144 @@
+[gd_scene load_steps=12 format=3 uid="uid://fhky8herdn4e"]
+
+[ext_resource type="Texture2D" uid="uid://47mvh6hpqg25" path="res://src/png/bg.png" id="2_hbcyb"]
+[ext_resource type="PackedScene" uid="uid://71p6b050u0ax" path="res://src/scenes/undo_button.tscn" id="2_usn0l"]
+[ext_resource type="PackedScene" uid="uid://cvgodb3mh1bcn" path="res://src/scenes/clear_button.tscn" id="3_ay6ug"]
+[ext_resource type="Script" path="res://src/scripts/main.gd" id="3_i35r8"]
+[ext_resource type="PackedScene" uid="uid://dwrqwq60fl2yn" path="res://src/scenes/OrgnColorPanel.tscn" id="4_o8xqj"]
+[ext_resource type="PackedScene" uid="uid://mb6lh37myxsl" path="res://src/scenes/match_button.tscn" id="5_4s8e5"]
+[ext_resource type="PackedScene" uid="uid://cqwnwstg8u7ua" path="res://src/scenes/ColorPanel.tscn" id="5_7tq66"]
+[ext_resource type="AudioStream" uid="uid://ddmfegn64x6jw" path="res://src/sounds/clear.wav" id="5_75laj"]
+[ext_resource type="PackedScene" uid="uid://bhhun0alfs83u" path="res://src/scenes/hint_button.tscn" id="6_gin6s"]
+[ext_resource type="PackedScene" uid="uid://b38niq8ddl3yc" path="res://src/scenes/pause.tscn" id="7_eg68x"]
+[ext_resource type="AudioStream" uid="uid://cvm7df38vaiq3" path="res://src/sounds/drop.mp3" id="10_ryvqp"]
+
+[node name="Mainscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_i35r8")
+
+[node name="bg" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 1900.0
+offset_bottom = 1234.0
+texture = ExtResource("2_hbcyb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="undo_button" parent="Control" instance=ExtResource("2_usn0l")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -140.0
+offset_top = 130.0
+offset_right = 330.0
+offset_bottom = 350.0
+scale = Vector2(0.75, 0.75)
+tooltip_text = "undo"
+
+[node name="undo_audio" type="AudioStreamPlayer" parent="Control/undo_button"]
+unique_name_in_owner = true
+stream = ExtResource("10_ryvqp")
+
+[node name="clear_button" parent="Control" instance=ExtResource("3_ay6ug")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -140.0
+offset_top = 310.0
+offset_right = 330.0
+offset_bottom = 530.0
+scale = Vector2(0.75, 0.75)
+tooltip_text = "clear all"
+
+[node name="clear_audio" type="AudioStreamPlayer" parent="Control/clear_button"]
+unique_name_in_owner = true
+stream = ExtResource("5_75laj")
+pitch_scale = 1.2
+
+[node name="OrgnColorPanel" parent="Control" instance=ExtResource("4_o8xqj")]
+unique_name_in_owner = true
+offset_left = 390.0
+offset_top = 24.0
+offset_right = 390.0
+offset_bottom = 24.0
+
+[node name="ColorPanel" parent="Control" instance=ExtResource("5_7tq66")]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 390.0
+offset_top = 280.0
+offset_right = 390.0
+offset_bottom = 280.0
+scale = Vector2(0.95, 0.95)
+
+[node name="match_button" parent="Control" instance=ExtResource("5_4s8e5")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 945.0
+offset_top = 310.0
+offset_right = 1415.0
+offset_bottom = 530.0
+scale = Vector2(0.75, 0.75)
+tooltip_text = "match!"
+
+[node name="mathc_audio" type="AudioStreamPlayer" parent="Control/match_button"]
+unique_name_in_owner = true
+
+[node name="ColorsHBoxContainer" type="HBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="hint_button" parent="Control" instance=ExtResource("6_gin6s")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 945.0
+offset_top = 130.0
+offset_right = 1413.0
+offset_bottom = 350.0
+scale = Vector2(0.75, 0.75)
+tooltip_text = "little hint"
+
+[node name="hint_audio" type="AudioStreamPlayer" parent="Control/hint_button"]
+unique_name_in_owner = true
+
+[node name="pause" parent="." instance=ExtResource("7_eg68x")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="match_color" from="." to="pause" method="_on_mainscene_match_color"]
+[connection signal="gui_input" from="Control/undo_button" to="." method="_on_undo_button_gui_input"]
+[connection signal="gui_input" from="Control/clear_button" to="." method="_on_clear_button_gui_input"]
+[connection signal="gui_input" from="Control/match_button" to="." method="_on_match_button_gui_input"]
+[connection signal="gui_input" from="Control/hint_button" to="." method="_on_hint_botton_gui_input"]

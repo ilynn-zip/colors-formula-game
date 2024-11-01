@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://mb6lh37myxsl"]
+
+[ext_resource type="Texture2D" uid="uid://c0rflnaqe4waq" path="res://src/png/match.png" id="1_x3scc"]
+
+[node name="match_button" type="TextureRect"]
+offset_right = 470.0
+offset_bottom = 220.0
+pivot_offset = Vector2(470, 110)
+texture = ExtResource("1_x3scc")

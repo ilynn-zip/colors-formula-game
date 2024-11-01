@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvgodb3mh1bcn"]
+
+[ext_resource type="Texture2D" uid="uid://irycn0hxcgkv" path="res://src/png/clear.png" id="1_hhg66"]
+
+[node name="clear_button" type="TextureRect"]
+offset_right = 470.0
+offset_bottom = 220.0
+pivot_offset = Vector2(0, 110)
+texture = ExtResource("1_hhg66")

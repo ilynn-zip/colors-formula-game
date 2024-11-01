@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhhun0alfs83u"]
+
+[ext_resource type="Texture2D" uid="uid://bvxoqvvohl06o" path="res://src/png/hint_button.png" id="1_826gr"]
+
+[node name="hint_button" type="TextureRect"]
+offset_right = 120.0
+offset_bottom = 173.0
+pivot_offset = Vector2(470, 110)
+tooltip_text = "little help"
+texture = ExtResource("1_826gr")

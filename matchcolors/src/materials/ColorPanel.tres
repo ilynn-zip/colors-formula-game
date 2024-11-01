@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://r3r45dlqjwys"]
+
+[ext_resource type="Shader" path="res://src/shaders/ColorPanel.gdshader" id="1_nnmw8"]
+
+[resource]
+shader = ExtResource("1_nnmw8")
+shader_parameter/first_color = Color(1, 1, 1, 1)
+shader_parameter/second_color = Color(0, 0, 0, 1)
+shader_parameter/position = -1.0
+shader_parameter/size = 1.0
+shader_parameter/angle = 160.0

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddwrqb263vgno"]
+
+[ext_resource type="FontFile" uid="uid://cik14wtjqorsg" path="res://src/fonts/BalooBhai2-SemiBold.ttf" id="1_ipc2m"]
+[ext_resource type="Texture2D" uid="uid://c5wfga0uv2m62" path="res://src/png/button.png" id="2_6tp83"]
+
+[node name="Button" type="Button"]
+clip_contents = true
+offset_left = -305.0
+offset_top = -80.0
+offset_right = 303.0
+offset_bottom = 81.0
+pivot_offset = Vector2(305, 80)
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ipc2m")
+theme_override_font_sizes/font_size = 40
+text = "Mix colors"
+icon = ExtResource("2_6tp83")
+flat = true
+icon_alignment = 1

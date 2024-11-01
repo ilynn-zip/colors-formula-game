@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://71p6b050u0ax"]
+
+[ext_resource type="Texture2D" uid="uid://bp4h2amln2vhu" path="res://src/png/undo.png" id="1_53wko"]
+
+[node name="undo_button" type="TextureRect"]
+offset_right = 470.0
+offset_bottom = 220.0
+pivot_offset = Vector2(0, 110)
+texture = ExtResource("1_53wko")

@@ -1,0 +1,157 @@
+[gd_scene load_steps=13 format=3 uid="uid://b38niq8ddl3yc"]
+
+[ext_resource type="Shader" path="res://src/shaders/pause.gdshader" id="1_5gutm"]
+[ext_resource type="Script" path="res://src/scripts/pause.gd" id="1_ler4t"]
+[ext_resource type="Texture2D" uid="uid://47mvh6hpqg25" path="res://src/png/bg.png" id="3_te812"]
+[ext_resource type="StyleBox" uid="uid://cjvl7afkkwp4d" path="res://src/themes/pause_orgn_color.tres" id="3_toix6"]
+[ext_resource type="StyleBox" uid="uid://bkqyi145paeld" path="res://src/themes/pause_color.tres" id="4_v3o60"]
+[ext_resource type="FontFile" uid="uid://cik14wtjqorsg" path="res://src/fonts/BalooBhai2-SemiBold.ttf" id="5_o7tso"]
+[ext_resource type="PackedScene" uid="uid://ddwrqb263vgno" path="res://src/scenes/button.tscn" id="6_mqdi8"]
+[ext_resource type="AudioStream" uid="uid://bp08351bvfjr6" path="res://src/sounds/match.mp3" id="8_g5u7p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hukkj"]
+shader = ExtResource("1_5gutm")
+shader_parameter/lod = 2.0
+shader_parameter/mix_percentage = 0.3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1oqv1"]
+bg_color = Color(0, 0, 0, 0.156863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nndj6"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_5nvto"]
+font = ExtResource("5_o7tso")
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+
+[node name="pause" type="ColorRect"]
+material = SubResource("ShaderMaterial_hukkj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 0)
+color = Color(1, 1, 1, 0.117647)
+script = ExtResource("1_ler4t")
+
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 1900.0
+offset_bottom = 1234.0
+texture = ExtResource("3_te812")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 0)
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 350
+theme_override_constants/margin_right = 350
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_o7tso")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_1oqv1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nndj6")
+rounded = true
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = -350.0
+offset_top = -37.0
+offset_right = 930.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_o7tso")
+theme_override_font_sizes/font_size = 30
+text = "Match"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="orgncolor" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("3_toix6")
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Color's Formula"
+label_settings = SubResource("LabelSettings_5nvto")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="colorpick" type="Panel" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("4_v3o60")
+
+[node name="answer_colors" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" parent="VBoxContainer" instance=ExtResource("6_mqdi8")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VBoxContainer/Button"]
+unique_name_in_owner = true
+stream = ExtResource("8_g5u7p")
+pitch_scale = 0.6
+playback_type = 1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="VBoxContainer/Button" to="." method="_on_button_button_up"]
